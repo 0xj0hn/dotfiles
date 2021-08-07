@@ -173,18 +173,9 @@ exec_always --no-startup-id picom --experimental-backends --config $HOME/.config
 bindsym XF86MonBrightnessUp exec xbacklight + 10
 bindsym XF86MonBrightnessDown exec xbacklight - 10
 # Pulse Audio controls
-#increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id /bin/bash "/home/yash/.i3/bin/volume.sh" up
-#decrease sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id /bin/bash "/home/yash/.i3/bin/volume.sh" down
-# mute sound
-bindsym XF86AudioMute exec --no-startup-id /bin/bash "/home/yash/.i3/bin/volume.sh" mute
-# Next Song
-bindsym XF86AudioNext exec --no-startup-id cmus-remote --next && pkill --signal SIGRTMIN+13 i3blocks
-# Prev Song
-bindsym XF86AudioPrev exec --no-startup-id cmus-remote --prev && pkill --signal SIGRTMIN+13 i3blocks
-# Play Pause
-bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause && pkill --signal SIGRTMIN+13 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle #mute sound
 # Screenshot
 bindsym Print exec teiler
 # switch workspace
