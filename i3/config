@@ -23,7 +23,7 @@ bindsym $mod+Return exec st
 # kill focused window
 bindsym $mod+q kill
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi"
+bindsym $mod+d exec --no-startup-id "rofi -no-lazy-grab -show drun -theme ~/.config/rofi/launcherCENTER.rasi"
 bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
@@ -250,7 +250,7 @@ bindsym $mod+y move workspace to output left
 #client.unfocused        #333333 #333333 #888888 #292d2e
 #client.urgent           #2f343a #900000 #ffffff #900000
 
-client.focused          #4632a8 #4632a8 #c5bee8 #dddddd
+client.focused          #b3b3b3 #b3b3b3 #000000 #dddddd
 client.focused_inactive #333333 #333333 #8373d1 #ffffff
 client.unfocused        #333333 #333333 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
