@@ -1,3 +1,3 @@
 # dotfiles-i3-bar
 copy all of those files to ~/.config/
-i hope you'lll like it
+i hope you love it <3
