@@ -6,13 +6,13 @@
 # Sets i3 settings for the session                                                                            #
 ###############################################################################################################
 set $mod Mod4
-
+exec_always --no-startup-id lxsession
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:JetBrains Mono 10
-
+#font pango:Terminus 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -25,7 +25,7 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id "rofi -no-lazy-grab -show drun -theme ~/.config/rofi/launcherCENTER.rasi"
 bindsym $mod+Shift+d exec --no-startup-id rofi -show window
-bindsym Mod1+Tab exec --no-startup-id rofi -show window
+bindsym Mod1+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/launcherCENTER.rasi
 
 # change focus
 bindsym $mod+j focus left
@@ -137,8 +137,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id conky
 exec_always --no-startup-id picom --experimental-backends --config $HOME/.config/picom/config
 #bar {
 # i3bar_command i3bar
@@ -177,7 +176,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle #mute sound
 # Screenshot
-bindsym Print exec teiler
+bindsym Print exec flameshot gui
 # switch workspace
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
@@ -209,6 +208,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id systemctl --user start redshift-gtk
 exec_always --no-startup-id setxkbmap -layout "us,ir" -option "lv3:ralt_alt,grp:alt_shift_toggle"
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Workspace music
 bindsym $mod+m workspace "♪"
 bindsym $mod+Shift+m move container to workspace "♪"
@@ -234,7 +234,6 @@ bindsym $mod+Shift+Tab exec screen -S cmus -d -m cmus && pkill --signal SIGRTMIN
 bindsym $mod+Tab mode "$music"
 
 # Compositing Manager
-exec --no-startup-id compton -b
 # Tiling Window Manager Notification Daemon
 exec --no-startup-id twmnd
 # Set color Profile
@@ -254,6 +253,8 @@ client.focused          #b3b3b3 #b3b3b3 #000000 #dddddd
 client.focused_inactive #333333 #333333 #8373d1 #ffffff
 client.unfocused        #333333 #333333 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
+
+#client.focusd           #4d0ca8 #4d0ca8 #000000 #dddddd TODO: i'm here
 
 assign [class=".*(F|f)irefox.*"] $workspace1
 assign [class="chromium"] $workspace9
